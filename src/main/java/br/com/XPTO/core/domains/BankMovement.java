@@ -9,12 +9,12 @@ public class BankMovement {
     private Double value;
     private LocalDate createdAt;
     private CreditDebitIndicator creditDebitIndicator;
-    private Account account;
+    private Long account;
 
     public BankMovement() {
     }
 
-    public BankMovement(Long id, Double value, LocalDate createdAt, CreditDebitIndicator creditDebitIndicator, Account account) {
+    public BankMovement(Long id, Double value, LocalDate createdAt, CreditDebitIndicator creditDebitIndicator, Long account) {
         this.id = id;
         this.value = value;
         this.createdAt = createdAt;
@@ -54,11 +54,11 @@ public class BankMovement {
         this.creditDebitIndicator = creditDebitIndicator;
     }
 
-    public Account getAccount() {
+    public Long getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public void setAccount(Long account) {
         this.account = account;
     }
 }

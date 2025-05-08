@@ -20,7 +20,8 @@ public class Client {
     public Client() {
     }
 
-    public Client(String name, String cpfCnpj, Address address, List<Account> accounts, TaxIdentifiers taxIdentifiers, String telephone, LocalDate createdAt, Double balanceTotal) {
+    public Client(Long id, String name, String cpfCnpj, Address address, List<Account> accounts, TaxIdentifiers taxIdentifiers, String telephone, LocalDate createdAt, Double balanceTotal) {
+        this.id = id;
         this.name = name;
         this.cpfCnpj = cpfCnpj;
         this.address = address;
@@ -29,6 +30,14 @@ public class Client {
         this.telephone = telephone;
         this.createdAt = createdAt;
         this.balanceTotal = balanceTotal;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

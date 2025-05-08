@@ -5,12 +5,12 @@ public class Account {
     private Long id;
     private Double balance;
     List<BankMovement> bankMovements;
-    private Client client;
+    private Long client;
 
     public Account() {
     }
 
-    public Account(Long id, Double balance, List<BankMovement> bankMovements, Client client) {
+    public Account(Long id, Double balance, List<BankMovement> bankMovements, Long client) {
         this.id = id;
         this.balance = balance;
         this.bankMovements = bankMovements;
@@ -41,11 +41,12 @@ public class Account {
         this.bankMovements = bankMovements;
     }
 
-    public Client getClient() {
+    public Long getClient() {
         return client;
     }
 
-    public void setClient(Client client) {
+    public void setClient(Long
+                                  client) {
         this.client = client;
     }
 }
