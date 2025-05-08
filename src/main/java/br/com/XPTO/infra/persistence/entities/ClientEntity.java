@@ -18,7 +18,8 @@ import java.util.List;
 @Setter
 public class ClientEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq")
+    @SequenceGenerator(name = "client_seq", sequenceName = "seq_tb_client", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)

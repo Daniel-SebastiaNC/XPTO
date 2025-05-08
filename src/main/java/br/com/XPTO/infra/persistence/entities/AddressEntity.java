@@ -15,7 +15,8 @@ import javax.persistence.*;
 @Setter
 public class AddressEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
+    @SequenceGenerator(name = "address_seq", sequenceName = "seq_tb_address", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)

@@ -1,10 +1,7 @@
 package br.com.XPTO.infra.persistence.entities;
 
 import br.com.XPTO.core.enums.CreditDebitIndicator;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,9 +12,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = "account")
 public class BankMovementEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bank_movement_seq")
+    @SequenceGenerator(name = "bank_movement_seq", sequenceName = "seq_tb_bank_movement", allocationSize = 1)
     private Long id;
 
     @Column(nullable = false)

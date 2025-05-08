@@ -1,9 +1,6 @@
 package br.com.XPTO.infra.persistence.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,9 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString(exclude = "client")
 public class AccountEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
+    @SequenceGenerator(name = "account_seq", sequenceName = "seq_tb_account", allocationSize = 1)
     private Long id;
 
     private Double balance;
