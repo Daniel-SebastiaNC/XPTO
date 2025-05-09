@@ -38,7 +38,7 @@ public class AccountEntityMapper {
 
     public AccountEntity toEntity(Account domain) {
         ClientEntity clientEntity = null;
-        if (domain.getClient() != null) {
+        if (domain.getClient() != null && domain.getClient() != 0) {
             clientEntity = clientRepository.findById(domain.getClient())
                     .orElseThrow(() -> new DataNotFoundException("Client Not Found by Id, please contact support"));
         }
