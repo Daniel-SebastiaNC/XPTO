@@ -1,12 +1,15 @@
 package br.com.XPTO.infra.beans;
 
 import br.com.XPTO.core.gateways.AccountGateway;
+import br.com.XPTO.core.gateways.AddressGateway;
 import br.com.XPTO.core.gateways.BankMovementGateway;
 import br.com.XPTO.core.gateways.ClientGateway;
 import br.com.XPTO.core.usecases.account.CreateBankAccountUsecase;
 import br.com.XPTO.core.usecases.account.CreateBankAccountUsecaseImpl;
 import br.com.XPTO.core.usecases.account.MakeBankMovementUsecase;
 import br.com.XPTO.core.usecases.account.MakeBankMovementUsecaseImpl;
+import br.com.XPTO.core.usecases.address.UpdateAddressUsecase;
+import br.com.XPTO.core.usecases.address.UpdateAddressUsecaseImpl;
 import br.com.XPTO.core.usecases.client.CreateClientUsacase;
 import br.com.XPTO.core.usecases.client.CreateClientUsacaseImpl;
 import org.springframework.context.annotation.Bean;
@@ -27,5 +30,10 @@ public class BeanConfiguration {
     @Bean
     public CreateClientUsacase createClientUsacase(ClientGateway clientGateway, AccountGateway accountGateway) {
         return new CreateClientUsacaseImpl(clientGateway, accountGateway);
+    }
+
+    @Bean
+    public UpdateAddressUsecase updateAddressUsecase(ClientGateway clientGateway, AddressGateway addressGateway){
+        return new UpdateAddressUsecaseImpl(clientGateway, addressGateway);
     }
 }

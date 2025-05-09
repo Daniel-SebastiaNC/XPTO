@@ -8,4 +8,6 @@ public interface ClientGateway {
     Client saveClient(Client client);
 
     Optional<Client> findClientByCpfCnpj(String cpfCnpj);
+
+    Optional<Client> findClientById(Long id);
 }

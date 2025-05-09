@@ -30,5 +30,10 @@ public class ClientRepositoryGateway implements ClientGateway {
         return repository.findClientByCpfCnpj(cpfCnpj).map(clientEntityMapper::toDomain);
     }
 
+    @Override
+    public Optional<Client> findClientById(Long id) {
+        return repository.findById(id).map(clientEntityMapper::toDomain);
+    }
+
 
 }

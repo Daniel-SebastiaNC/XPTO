@@ -31,7 +31,6 @@ public class CreateClientUsacaseImpl implements CreateClientUsacase {
             newBalance += account.getBalance();
         }
 
-        System.out.println(client.getAccounts());
         client.setBalanceTotal(newBalance);
 
         Client clientSave = clientGateway.saveClient(client);
