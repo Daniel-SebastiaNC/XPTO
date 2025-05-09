@@ -2,10 +2,12 @@ package br.com.XPTO.infra.presentation;
 
 import br.com.XPTO.core.usecases.address.UpdateAddressUsecase;
 import br.com.XPTO.core.usecases.client.CreateClientUsacase;
+import br.com.XPTO.core.usecases.client.ReportByClientUsecase;
 import br.com.XPTO.infra.dtos.address.request.AddressRequest;
 import br.com.XPTO.infra.dtos.address.response.AddressResponse;
 import br.com.XPTO.infra.dtos.client.requests.ClientRequest;
 import br.com.XPTO.infra.dtos.client.responses.ClientResponse;
+import br.com.XPTO.infra.dtos.client.responses.ReportByClient;
 import br.com.XPTO.infra.mappers.address.AddressDtoMapper;
 import br.com.XPTO.infra.mappers.client.ClientDtoMapper;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class ClientController {
 
     private final CreateClientUsacase createClientUsacase;
     private final UpdateAddressUsecase updateAddressUsecase;
+    private final ReportByClientUsecase reportByClientUsecase;
 
     private final ClientDtoMapper clientDtoMapper;
     private final AddressDtoMapper addressDtoMapper;
@@ -43,5 +46,10 @@ public class ClientController {
                         updateAddressUsecase.execute(id, addressDtoMapper.toDomain(addressRequest))
                 )
         );
+    }
+
+    @GetMapping("/report/{id}")
+    public ResponseEntity<ReportByClient> reportByClient(@PathVariable Long id){
+        return ResponseEntity.ok(reportByClientUsecase.execute(id));
     }
 }

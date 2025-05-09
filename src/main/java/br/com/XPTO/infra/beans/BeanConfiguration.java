@@ -12,6 +12,9 @@ import br.com.XPTO.core.usecases.address.UpdateAddressUsecase;
 import br.com.XPTO.core.usecases.address.UpdateAddressUsecaseImpl;
 import br.com.XPTO.core.usecases.client.CreateClientUsacase;
 import br.com.XPTO.core.usecases.client.CreateClientUsacaseImpl;
+import br.com.XPTO.core.usecases.client.ReportByClientUsecase;
+import br.com.XPTO.core.usecases.client.ReportByClientUsecaseImpl;
+import br.com.XPTO.infra.mappers.address.AddressDtoMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -35,5 +38,10 @@ public class BeanConfiguration {
     @Bean
     public UpdateAddressUsecase updateAddressUsecase(ClientGateway clientGateway, AddressGateway addressGateway){
         return new UpdateAddressUsecaseImpl(clientGateway, addressGateway);
+    }
+
+    @Bean
+    public ReportByClientUsecase reportByClientUsecase(ClientGateway clientGateway, AddressDtoMapper addressDtoMapper){
+        return new ReportByClientUsecaseImpl(clientGateway, addressDtoMapper);
     }
 }
