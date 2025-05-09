@@ -28,11 +28,11 @@ public class ClientEntity {
     @Column(name = "cpf_cnpj", nullable = false, unique = true)
     private String cpfCnpj;
 
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
     private AddressEntity address;
 
-    @OneToMany(mappedBy = "client")
+    @OneToMany(mappedBy = "client", orphanRemoval = true)
     @Column(nullable = false)
     private List<AccountEntity> accounts;
 

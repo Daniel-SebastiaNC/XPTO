@@ -49,4 +49,14 @@ public class Account {
                                   client) {
         this.client = client;
     }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", balance=" + balance +
+                ", bankMovements=" + bankMovements +
+                ", client=" + client +
+                '}';
+    }
 }
