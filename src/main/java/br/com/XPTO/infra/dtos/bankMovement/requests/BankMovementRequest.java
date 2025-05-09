@@ -1,14 +1,24 @@
 package br.com.XPTO.infra.dtos.bankMovement.requests;
 
-import br.com.XPTO.core.enums.CreditDebitIndicator;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@Builder
 public class BankMovementRequest {
+    @NotNull(message = "required")
+    @Positive(message = "value positive")
     private Double value;
-    private CreditDebitIndicator creditDebitIndicator;
+
+    @NotNull(message = "required")
+    @Pattern(regexp = "CREDIT|DEBIT", message = "CREDIT or DEBIT")
+    private String creditDebitIndicator;
 }
