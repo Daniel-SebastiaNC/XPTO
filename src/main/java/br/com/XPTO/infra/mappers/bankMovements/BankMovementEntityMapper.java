@@ -1,6 +1,7 @@
 package br.com.XPTO.infra.mappers.bankMovements;
 
 import br.com.XPTO.core.domains.BankMovement;
+import br.com.XPTO.infra.exceptions.DataNotFoundException;
 import br.com.XPTO.infra.persistence.entities.AccountEntity;
 import br.com.XPTO.infra.persistence.entities.BankMovementEntity;
 import br.com.XPTO.infra.persistence.repositories.AccountRepository;
@@ -19,19 +20,22 @@ public class BankMovementEntityMapper {
                 entity.getValue(),
                 entity.getCreatedAt(),
                 entity.getCreditDebitIndicator(),
-                entity.getAccount().getId()
+                (entity.getAccount() == null) ? 0 : entity.getAccount().getId()
         );
     }
 
     public BankMovementEntity toEntity(BankMovement domain) {
-        AccountEntity byId = accountRepository.findById(domain.getAccount()).orElseThrow(() -> new RuntimeException());
+        AccountEntity accountEntity = null;
+        if (domain.getAccount() != null && domain.getAccount() != 0) {
+            accountEntity  = accountRepository.findById(domain.getAccount()).orElseThrow(() -> new DataNotFoundException("Account Id Not Found"));
+        }
 
         return new BankMovementEntity(
                 domain.getId(),
                 domain.getValue(),
                 domain.getCreatedAt(),
                 domain.getCreditDebitIndicator(),
-                byId
+                accountEntity
         );
     }
 }
